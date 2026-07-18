@@ -258,14 +258,19 @@ def main(argv=None):
         return 0
 
     token = os.environ.get("BOT_TOKEN", "").strip()
-    channel_id = os.environ.get("CHANNEL_ID", "").strip()
+    # Хендл канала — не секрет: если CHANNEL_ID не задан, берём из config.json.
+    # Секретом он обязан быть только для приватного канала (там нужен числовой -100…).
+    channel_id = os.environ.get("CHANNEL_ID", "").strip() or str(cfg.get("channel_handle", "")).strip()
 
     mode = "dry"
     if args.simulate:
         mode = "simulate"
     elif args.send:
-        if not token or not channel_id:
-            log("ОШИБКА: --send требует BOT_TOKEN и CHANNEL_ID в окружении. Ничего не отправлено.")
+        missing = [n for n, v in (("BOT_TOKEN", token), ("CHANNEL_ID", channel_id)) if not v]
+        if missing:
+            # Называем недостающее поимённо: «что-то из двух» стоит лишнего круга диагностики.
+            log("ОШИБКА: не задано " + ", ".join(missing) + ". Ничего не отправлено.")
+            log("→ GitHub → Settings → Secrets and variables → Actions. Имена чувствительны к регистру.")
             return 2
         mode = "send"
 

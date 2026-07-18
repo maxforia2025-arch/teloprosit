@@ -4,3 +4,4 @@ __pycache__/
 secret.json
 .DS_Store
 *.tmp
+diagnose.log
