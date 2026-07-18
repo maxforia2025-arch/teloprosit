@@ -1,0 +1,51 @@
+name: telo_prosit-promo
+
+# Перекрёстная реклама сети Maxforia Group: ОДНА в неделю, следующий канал по кругу.
+# Воскресенье 12:00 МСК — время, когда ленту читают спокойно, а не между делом.
+# Двойная защита от лишнего промо: расписание раз в неделю + недельный слот в promo_state.json.
+on:
+  schedule:
+    - cron: "0 9 * * 0"     # 12:00 МСК, воскресенье
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Опубликовать, даже если на этой неделе реклама уже выходила"
+        default: "нет"
+        type: choice
+        options: ["нет", "да"]
+
+permissions:
+  contents: write           # коммитим promo_state.json — это и есть счётчик круга
+
+concurrency:
+  group: telo_prosit-promo
+  cancel-in-progress: false
+
+jobs:
+  promo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Реклама канала недели
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+          FORCE: ${{ github.event.inputs.force || 'нет' }}
+        run: |
+          FLAG=""
+          if [ "$FORCE" = "да" ]; then FLAG="--force"; fi
+          python3 promo.py --send $FLAG
+
+      - name: Сохранить счётчик круга
+        if: always()
+        run: |
+          git config user.name  "telo_prosit-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add promo_state.json
+          git diff --staged --quiet || git commit -m "promo: канал недели опубликован [skip ci]"
+          git push
