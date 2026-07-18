@@ -1,5 +1,8 @@
 {
- "posted": [],
- "last_post_id": null,
- "last_run": null
+ "posted": [
+  "signal_20",
+  "pozevota_pered_snom"
+ ],
+ "last_post_id": "pozevota_pered_snom",
+ "last_run": "2026-07-18T20:37:14Z"
 }
