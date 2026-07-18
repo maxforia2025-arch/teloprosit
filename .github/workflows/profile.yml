@@ -1,0 +1,43 @@
+name: telo_prosit-profile
+
+# Оформление канала «Тело просит»: аватар + описание.
+# Только по кнопке — расписания нет: профиль меняют осознанно, а не трижды в день.
+on:
+  workflow_dispatch:
+    inputs:
+      what:
+        description: "Что обновить"
+        default: "всё"
+        type: choice
+        options:
+          - "всё"
+          - "только аватар"
+          - "только описание"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: telo_prosit-profile
+  cancel-in-progress: false
+
+jobs:
+  profile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set channel photo and description
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+          WHAT: ${{ github.event.inputs.what || 'всё' }}
+        run: |
+          FLAG=""
+          if [ "$WHAT" = "только аватар" ];   then FLAG="--photo-only";       fi
+          if [ "$WHAT" = "только описание" ]; then FLAG="--description-only"; fi
+          python3 set_profile.py --send $FLAG
