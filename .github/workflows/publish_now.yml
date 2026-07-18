@@ -1,0 +1,59 @@
+name: telo_prosit-publish-now
+
+# Ручная внеплановая публикация.
+# Триггер — пуш в ветку publish-now (в том числе пустым коммитом): кнопку
+# workflow_dispatch может нажать только владелец репозитория, а пуш доступен
+# любому, у кого есть права на запись. Ветка живёт постоянно, main не задет.
+#
+#   git checkout publish-now && git commit --allow-empty -m "публикация" && git push
+#
+# Сколько постов за раз — в файле publish_count.txt (по умолчанию 1).
+on:
+  push:
+    branches: [publish-now]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telo_prosit-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Растеризатор карточек
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq librsvg2-bin
+
+      - name: Публикация
+        run: |
+          N=1
+          if [ -f publish_count.txt ]; then N=$(tr -dc '0-9' < publish_count.txt); fi
+          if [ -z "$N" ]; then N=1; fi
+          echo "публикую постов: $N"
+          python3 post.py --send --count "$N"
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+
+      # Состояние обязано лечь в main: расписание читает анти-дубль оттуда.
+      - name: Перенести state.json в main
+        if: always()
+        run: |
+          cp state.json /tmp/state.json
+          git config user.name  "telo_prosit-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git fetch origin main
+          git checkout -B main origin/main
+          cp /tmp/state.json state.json
+          git add state.json
+          git diff --staged --quiet || git commit -m "state: внеплановая публикация [skip ci]"
+          git push origin main
