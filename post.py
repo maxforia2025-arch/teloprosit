@@ -182,6 +182,66 @@ def format_post(post, cfg):
 
 # ── Telegram ─────────────────────────────────────────────────────────────────
 
+CAPTION_LIMIT = 1024      # лимит Telegram на подпись к фото; у текста лимит 4096
+
+
+def send_photo(token, channel_id, photo_path, caption):
+    """Фото с подписью. Multipart вручную — зависимостей у движка нет."""
+    url = "https://api.telegram.org/bot" + token + "/sendPhoto"
+    boundary = "----teloprositcard9d1f"
+    with open(photo_path, "rb") as fh:
+        blob = fh.read()
+
+    body = b""
+    for key, val in (("chat_id", channel_id), ("caption", caption), ("parse_mode", "HTML")):
+        body += ("--" + boundary + "\r\n").encode()
+        body += ('Content-Disposition: form-data; name="' + key + '"\r\n\r\n').encode()
+        body += str(val).encode("utf-8") + b"\r\n"
+    body += ("--" + boundary + "\r\n").encode()
+    body += b'Content-Disposition: form-data; name="photo"; filename="card.png"\r\n'
+    body += b"Content-Type: image/png\r\n\r\n" + blob + b"\r\n"
+    body += ("--" + boundary + "--\r\n").encode()
+
+    req = urllib.request.Request(url, data=body, headers={
+        "User-Agent": UA,
+        "Content-Type": "multipart/form-data; boundary=" + boundary,
+    })
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    if not data.get("ok"):
+        raise RuntimeError(data)
+    return data
+
+
+def publish(token, channel_id, text, post, cfg):
+    """Публикация с картинкой сверху (Президент, 2026-07-18).
+
+    Картинка обязательна по замыслу, но не обязана быть условием выхода поста:
+    если растеризатор недоступен или Telegram отверг фото, пост уходит текстом.
+    Пропущенная публикация дороже публикации без обложки.
+    """
+    try:
+        import cards
+        card = cards.render(post, cfg)
+    except Exception as exc:
+        card = None
+        log("карточка не собралась (" + str(exc) + ") — публикую текстом")
+
+    if not card:
+        return send_telegram(token, channel_id, text)
+
+    try:
+        if len(text) <= CAPTION_LIMIT:
+            return send_photo(token, channel_id, card, text)
+        # Длинный пост в подпись не влезает: фото с заголовком, следом полный текст.
+        head = "🫀 <b>" + html.escape(str(post.get("title", ""))) + "</b>"
+        send_photo(token, channel_id, card, head)
+        return send_telegram(token, channel_id, text)
+    except Exception as exc:
+        log("фото не ушло (" + str(exc) + ") — публикую текстом")
+        return send_telegram(token, channel_id, text)
+
+
 def send_telegram(token, channel_id, text):
     url = "https://api.telegram.org/bot" + token + "/sendMessage"
     payload = urllib.parse.urlencode({
@@ -210,7 +270,7 @@ def run_once(posts, state, cfg, mode, token, channel_id):
     text = format_post(post, cfg)
 
     if mode == "send":
-        send_telegram(token, channel_id, text)
+        publish(token, channel_id, text, post, cfg)
         log("опубликовано: " + str(post.get("id")) + " [" + str(post.get("cat", "-")) + "]")
     else:
         print("\n" + "=" * 56)

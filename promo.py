@@ -131,7 +131,10 @@ def main():
         log("ОШИБКА: не задан BOT_TOKEN" + ("" if chat else " и хендл канала") + ".")
         return 2
 
-    engine.send_telegram(token, chat, text)
+    # Реклама — тоже пост, значит тоже с картинкой сверху.
+    card_post = {"label": "ЧТО ПОЧИТАТЬ, КРОМЕ НАС", "glyph": "step",
+                 "title": str(ch.get("emoji", "")) + " " + str(ch.get("title", ""))}
+    engine.publish(token, chat, text, card_post, cfg)
     log("опубликована реклама: " + str(ch.get("title")) + " " + str(ch.get("handle")))
 
     state["n"] = n + 1

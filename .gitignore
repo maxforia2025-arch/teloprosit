@@ -5,3 +5,6 @@ secret.json
 .DS_Store
 *.tmp
 diagnose.log
+card_tmp.*
+card_*.png
+card_*.svg
