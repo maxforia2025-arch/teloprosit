@@ -56,8 +56,9 @@
   "gorech_vo_rtu",
   "krasnyy_flag_27",
   "treshina_v_ugolke",
-  "holodnyi_pot"
+  "holodnyi_pot",
+  "jaw_tension_day"
  ],
- "last_post_id": "holodnyi_pot",
- "last_run": "2026-08-05T12:59:29Z"
+ "last_post_id": "jaw_tension_day",
+ "last_run": "2026-08-05T19:26:28Z"
 }
