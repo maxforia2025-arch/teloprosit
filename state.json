@@ -71,8 +71,9 @@
   "posture_stomach_full",
   "chelust_shchelkaet",
   "suhaya_kozha_zimoy",
-  "breath_hold_screen"
+  "breath_hold_screen",
+  "neck_forward_head"
  ],
- "last_post_id": "breath_hold_screen",
- "last_run": "2026-08-10T11:53:33Z"
+ "last_post_id": "neck_forward_head",
+ "last_run": "2026-08-10T18:54:26Z"
 }
