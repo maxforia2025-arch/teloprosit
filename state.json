@@ -77,8 +77,9 @@
   "tremor_hunger_hands",
   "vzdrog_zvuk_gromkiy",
   "pit_stoya_golova",
-  "vzglyad_v_zerkalo_glaza"
+  "vzglyad_v_zerkalo_glaza",
+  "golos_sel_konec_dnya"
  ],
- "last_post_id": "vzglyad_v_zerkalo_glaza",
- "last_run": "2026-08-12T11:53:36Z"
+ "last_post_id": "golos_sel_konec_dnya",
+ "last_run": "2026-08-12T18:59:18Z"
 }
