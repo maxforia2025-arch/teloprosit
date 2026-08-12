@@ -76,8 +76,9 @@
   "warm_room_sleep",
   "tremor_hunger_hands",
   "vzdrog_zvuk_gromkiy",
-  "pit_stoya_golova"
+  "pit_stoya_golova",
+  "vzglyad_v_zerkalo_glaza"
  ],
- "last_post_id": "pit_stoya_golova",
- "last_run": "2026-08-12T06:09:36Z"
+ "last_post_id": "vzglyad_v_zerkalo_glaza",
+ "last_run": "2026-08-12T11:53:36Z"
 }
