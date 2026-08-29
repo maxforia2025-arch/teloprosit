@@ -126,8 +126,9 @@
   "jaw_click_chew",
   "krasnyy_flag_rodinka",
   "blink_rate_reminder",
-  "weekend_sleep_debt"
+  "weekend_sleep_debt",
+  "warm_light_evening_signal"
  ],
- "last_post_id": "weekend_sleep_debt",
- "last_run": "2026-08-29T01:27:37Z"
+ "last_post_id": "warm_light_evening_signal",
+ "last_run": "2026-08-29T11:26:58Z"
 }
