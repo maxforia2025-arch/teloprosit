@@ -128,8 +128,9 @@
   "blink_rate_reminder",
   "weekend_sleep_debt",
   "warm_light_evening_signal",
-  "deep_breath_before_speaking"
+  "deep_breath_before_speaking",
+  "chest_pressure_stairs"
  ],
- "last_post_id": "deep_breath_before_speaking",
- "last_run": "2026-08-29T15:33:29Z"
+ "last_post_id": "chest_pressure_stairs",
+ "last_run": "2026-08-29T20:24:30Z"
 }
