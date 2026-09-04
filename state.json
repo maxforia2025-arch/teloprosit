@@ -145,8 +145,9 @@
   "evening_wind_down_ritual",
   "yawning_boring_task",
   "unclench_hands_now",
-  "headache_new_severe"
+  "headache_new_severe",
+  "cracking_knuckles_stress"
  ],
- "last_post_id": "headache_new_severe",
- "last_run": "2026-09-04T14:53:23Z"
+ "last_post_id": "cracking_knuckles_stress",
+ "last_run": "2026-09-04T20:16:09Z"
 }
