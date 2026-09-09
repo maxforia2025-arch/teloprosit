@@ -160,8 +160,9 @@
   "stretch_between_tasks",
   "nogti_borozdy",
   "sleep_talking_body_relax",
-  "headache_same_time_afternoon"
+  "headache_same_time_afternoon",
+  "appetite_gone_heat"
  ],
- "last_post_id": "headache_same_time_afternoon",
- "last_run": "2026-09-09T15:04:06Z"
+ "last_post_id": "appetite_gone_heat",
+ "last_run": "2026-09-09T20:24:35Z"
 }
