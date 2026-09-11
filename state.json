@@ -166,8 +166,9 @@
   "salt_taste_dehydration",
   "swelling_ankles_evening",
   "persistent_cough_flag",
-  "jaw_relax_tongue"
+  "jaw_relax_tongue",
+  "morning_thirst_dry"
  ],
- "last_post_id": "jaw_relax_tongue",
- "last_run": "2026-09-11T14:56:39Z"
+ "last_post_id": "morning_thirst_dry",
+ "last_run": "2026-09-11T20:26:14Z"
 }
