@@ -164,8 +164,9 @@
   "appetite_gone_heat",
   "nogi_do_sna",
   "salt_taste_dehydration",
-  "swelling_ankles_evening"
+  "swelling_ankles_evening",
+  "persistent_cough_flag"
  ],
- "last_post_id": "swelling_ankles_evening",
- "last_run": "2026-09-10T20:25:12Z"
+ "last_post_id": "persistent_cough_flag",
+ "last_run": "2026-09-11T09:19:24Z"
 }
