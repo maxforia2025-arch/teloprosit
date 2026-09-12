@@ -168,8 +168,9 @@
   "persistent_cough_flag",
   "jaw_relax_tongue",
   "morning_thirst_dry",
-  "shoulders_by_ears_call"
+  "shoulders_by_ears_call",
+  "cold_hands_meal"
  ],
- "last_post_id": "shoulders_by_ears_call",
- "last_run": "2026-09-12T08:58:58Z"
+ "last_post_id": "cold_hands_meal",
+ "last_run": "2026-09-12T13:57:54Z"
 }
