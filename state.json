@@ -169,8 +169,9 @@
   "jaw_relax_tongue",
   "morning_thirst_dry",
   "shoulders_by_ears_call",
-  "cold_hands_meal"
+  "cold_hands_meal",
+  "sudden_weight_change_flag"
  ],
- "last_post_id": "cold_hands_meal",
- "last_run": "2026-09-12T13:57:54Z"
+ "last_post_id": "sudden_weight_change_flag",
+ "last_run": "2026-09-12T20:10:55Z"
 }
