@@ -172,8 +172,9 @@
   "cold_hands_meal",
   "sudden_weight_change_flag",
   "light_dinner_sleep",
-  "signal_20"
+  "signal_20",
+  "pozevota_pered_snom"
  ],
- "last_post_id": "signal_20",
- "last_run": "2026-09-13T14:52:57Z"
+ "last_post_id": "pozevota_pered_snom",
+ "last_run": "2026-09-13T20:19:03Z"
 }
