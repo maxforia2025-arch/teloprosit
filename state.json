@@ -245,8 +245,9 @@
   "suhaya_kozha_zimoy",
   "breath_hold_screen",
   "neck_forward_head",
-  "warm_room_sleep"
+  "warm_room_sleep",
+  "tremor_hunger_hands"
  ],
- "last_post_id": "warm_room_sleep",
- "last_run": "2026-10-07T22:42:28Z"
+ "last_post_id": "tremor_hunger_hands",
+ "last_run": "2026-10-08T11:44:35Z"
 }
