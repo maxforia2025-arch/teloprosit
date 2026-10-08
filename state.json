@@ -246,8 +246,9 @@
   "breath_hold_screen",
   "neck_forward_head",
   "warm_room_sleep",
-  "tremor_hunger_hands"
+  "tremor_hunger_hands",
+  "vzdrog_zvuk_gromkiy"
  ],
- "last_post_id": "tremor_hunger_hands",
- "last_run": "2026-10-08T11:44:35Z"
+ "last_post_id": "vzdrog_zvuk_gromkiy",
+ "last_run": "2026-10-08T17:48:45Z"
 }
