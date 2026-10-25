@@ -296,8 +296,9 @@
   "cold_hands_after_meal_2",
   "morganie_pri_ekrane",
   "jaw_click_chew",
-  "krasnyy_flag_rodinka"
+  "krasnyy_flag_rodinka",
+  "blink_rate_reminder"
  ],
- "last_post_id": "krasnyy_flag_rodinka",
- "last_run": "2026-10-24T20:13:06Z"
+ "last_post_id": "blink_rate_reminder",
+ "last_run": "2026-10-25T09:32:15Z"
 }
