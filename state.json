@@ -299,8 +299,9 @@
   "krasnyy_flag_rodinka",
   "blink_rate_reminder",
   "weekend_sleep_debt",
-  "warm_light_evening_signal"
+  "warm_light_evening_signal",
+  "deep_breath_before_speaking"
  ],
- "last_post_id": "warm_light_evening_signal",
- "last_run": "2026-10-25T20:22:31Z"
+ "last_post_id": "deep_breath_before_speaking",
+ "last_run": "2026-10-26T10:43:48Z"
 }
