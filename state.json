@@ -313,8 +313,9 @@
   "night_wake_same_hour",
   "sighing_relief_stretch",
   "morning_stiff_first_steps",
-  "vzglyad_v_okno_utrom"
+  "vzglyad_v_okno_utrom",
+  "evening_wind_down_ritual"
  ],
- "last_post_id": "vzglyad_v_okno_utrom",
- "last_run": "2026-10-30T16:58:38Z"
+ "last_post_id": "evening_wind_down_ritual",
+ "last_run": "2026-10-30T21:55:44Z"
 }
