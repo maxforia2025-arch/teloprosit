@@ -316,8 +316,9 @@
   "vzglyad_v_okno_utrom",
   "evening_wind_down_ritual",
   "yawning_boring_task",
-  "unclench_hands_now"
+  "unclench_hands_now",
+  "headache_new_severe"
  ],
- "last_post_id": "unclench_hands_now",
- "last_run": "2026-10-31T15:59:55Z"
+ "last_post_id": "headache_new_severe",
+ "last_run": "2026-10-31T20:58:27Z"
 }
